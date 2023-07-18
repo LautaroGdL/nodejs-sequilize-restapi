@@ -1,8 +1,10 @@
 import app from './app.js';
 import { sequelize } from './database/database.js';
+import './models/Project.js'
 
 async function main() {
     try {
+        // await sequelize.sync();
         await sequelize.authenticate();
         console.log("Connection has been established successfully.");
         app.listen(3000);
