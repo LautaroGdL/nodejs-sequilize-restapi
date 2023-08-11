@@ -1,11 +1,12 @@
 import app from './app.js';
-import { sequelize } from './database/database.js';
-import './models/Project.js'
+import { sequelize } from '../src/database/database.js';
+
+import '../src/models/Project.js';
+import '../src/models/Task.js';
 
 async function main() {
     try {
-        // await sequelize.sync();
-        await sequelize.authenticate();
+        await sequelize.sync();
         console.log("Connection has been established successfully.");
         app.listen(3000);
         console.log('Server is listening on port:', 3000);
