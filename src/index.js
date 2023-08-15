@@ -1,6 +1,8 @@
 import app from './app.js';
 import { sequelize } from '../src/database/database.js';
 
+//Connection with DB
+//Sync winth DB
 
 async function main() {
     try {
