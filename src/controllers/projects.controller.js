@@ -36,10 +36,10 @@ export const updateProject = async (req, res) => {
         project.name = name
         project.priority = priority
         project.description = description
+        await project.save()
 
-        console.log(project)
-        
-        res.send('updating')
+        //console.log(project)
+        res.json(project)
     } catch (error) {
         return res.status(500).json({message: error.message})
 
