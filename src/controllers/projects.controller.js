@@ -20,6 +20,9 @@ export const getProject = async (req, res) => {
                 id,
             },
         });
+
+        if (!project) return res.status(400).json({message: 'Project does not exits'})
+        
         res.json(project);
     } catch (error) {
         return res.status(500).json({message: error.message})
