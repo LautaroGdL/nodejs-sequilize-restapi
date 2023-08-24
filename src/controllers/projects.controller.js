@@ -12,6 +12,20 @@ catch (error) {
 }
 };
 
+export const getProject = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const project = await Project.findOne({
+            where: {
+                id,
+            },
+        });
+        res.json(project);
+    } catch (error) {
+        return res.status(500).json({message: error.message})
+    }
+}
+
 export const createProject = async (req, res) => {
     const {name, priority, description} = req.body
 try{    
@@ -62,6 +76,3 @@ export const deleteProject = async(req, res) => {
     }
 };
 
-export const getProject = async (req, res) => {
-    
-}

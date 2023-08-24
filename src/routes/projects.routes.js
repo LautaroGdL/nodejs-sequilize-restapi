@@ -3,9 +3,9 @@ import { createProject, deleteProject, getProject, getProjects, updateProject } 
 const router = Router()
 
 router.get('/project', getProjects)
+router.get('/project/:id', getProject)
 router.post('/project', createProject)
 router.put('/project/:id', updateProject)
 router.delete('/project/:id', deleteProject)
-router.get('/project/:id', getProject)
 
 export default router 
