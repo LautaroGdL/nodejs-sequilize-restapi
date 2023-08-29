@@ -16,7 +16,10 @@ export const Project = sequelize.define('projects',{
     },
     description: {
         type: DataTypes.STRING
-    },
+    }
+    }, {
+    timestamps: false
+    
 });
 
 Project.hasMany(Task, {
