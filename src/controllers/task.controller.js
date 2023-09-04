@@ -9,6 +9,19 @@ export const getTasks =  async (req, res) => {
     }
 }; 
 
+export const getTask =  async (req, res) => {
+    const {id} = req.params
+    try {
+        const task = await Task.findOne({
+            where: {id},
+            atributes: ['name']
+        });
+        res.json(task)
+    } catch (error) {
+        return res.status(500).json({message: error.message})
+    }
+}; 
+
 export const createTasks =  async (req, res) => {
     try {
         const {name, description, projectId} = req.body
@@ -31,15 +44,19 @@ export const updateTasks = async (req, res) => {
         const task = await Task.findOne({
             where: { id },
         });
-        task.set(res.body);
+        task.set(req.body);
         await task.save();
         return res.json(task);
     } catch (error) {
-        return res.status(500).json({message: error.message})
-        
+        return res.status(500).json({message: error.message}) 
     }
 };
 
 export const deleteTasks = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        res.status(500).json({message: error.message})     
+    }
 
 };
