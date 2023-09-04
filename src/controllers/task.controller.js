@@ -11,7 +11,7 @@ export const getTasks =  async (req, res) => {
 
 export const createTasks =  async (req, res) => {
     try {
-        const {name, done, projectId} = req.body
+        const {name, description, projectId} = req.body
         
         const newTask = await Task.create({
             name,
@@ -24,3 +24,22 @@ export const createTasks =  async (req, res) => {
         return res.status(500).json({message: error.message})
     }
 }; 
+
+export const updateTasks = async (req, res) => {
+    try {
+        const {id} = req.params;
+        const task = await Task.findOne({
+            where: { id },
+        });
+        task.set(res.body);
+        await task.save();
+        return res.json(task);
+    } catch (error) {
+        return res.status(500).json({message: error.message})
+        
+    }
+};
+
+export const deleteTasks = async (req, res) => {
+
+};
