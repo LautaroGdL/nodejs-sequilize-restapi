@@ -53,8 +53,13 @@ export const updateTasks = async (req, res) => {
 };
 
 export const deleteTasks = async (req, res) => {
+    const { id } = req.params;
     try {
-        
+        const result = await Task.destroy({
+            where: { id },
+        });
+        console.log(result)
+        return res.Status(204)
     } catch (error) {
         res.status(500).json({message: error.message})     
     }
