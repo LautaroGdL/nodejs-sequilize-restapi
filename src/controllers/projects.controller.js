@@ -29,6 +29,18 @@ export const getProject = async (req, res) => {
     }
 }
 
+export const getProjectTask = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const task = await Task.findAll({
+            where: {projectId: id}
+        });
+        res.json(task);
+    } catch (error) {
+        return res.status(500).json({message: error.message})
+    }
+};
+
 export const createProject = async (req, res) => {
     const {name, priority, description} = req.body
 try{    

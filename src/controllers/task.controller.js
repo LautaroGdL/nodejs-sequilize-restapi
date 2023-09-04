@@ -22,7 +22,7 @@ export const getTask =  async (req, res) => {
     }
 }; 
 
-export const createTasks =  async (req, res) => {
+export const createTask =  async (req, res) => {
     try {
         const {name, description, projectId} = req.body
         
@@ -38,7 +38,7 @@ export const createTasks =  async (req, res) => {
     }
 }; 
 
-export const updateTasks = async (req, res) => {
+export const updateTask = async (req, res) => {
     try {
         const {id} = req.params;
         const task = await Task.findOne({
@@ -52,7 +52,7 @@ export const updateTasks = async (req, res) => {
     }
 };
 
-export const deleteTasks = async (req, res) => {
+export const deleteTask = async (req, res) => {
     const { id } = req.params;
     try {
         const result = await Task.destroy({
